@@ -1,7 +1,8 @@
 import Scene = Phaser.Scene;
+import { Images } from "./assets/images";
 
 export class TextButton extends Phaser.GameObjects.GameObject {
-  images: Array<string>;
+  images: Array<Images>;
   text: Phaser.GameObjects.Text;
   button: Phaser.GameObjects.Image;
 
@@ -9,7 +10,7 @@ export class TextButton extends Phaser.GameObjects.GameObject {
     scene: Scene,
     x: number,
     y: number,
-    images: Array<string>,
+    images: Array<Images>,
     text:string,
     onClick: () => void
   ) {

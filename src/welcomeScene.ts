@@ -1,5 +1,6 @@
 import "phaser";
 import { TextButton } from "./textButton";
+import { getNormalButtonImages, Images, loadImages } from "./assets/images";
 
 export class WelcomeScene extends Phaser.Scene {
   title: Phaser.GameObjects.Text;
@@ -10,13 +11,7 @@ export class WelcomeScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image("normal_button", "assets/buttonLong_brown.png");
-    this.load.image("pressed_button", "assets/buttonLong_brown_pressed.png");
-    this.load.image("hovered_button", "assets/buttonLong_beige.png");
-    this.load.image(
-      "hovered_pressed_button",
-      "assets/buttonLong_beige_pressed.png"
-    );
+    loadImages(this);
   }
 
   create(): void {
@@ -29,24 +24,16 @@ export class WelcomeScene extends Phaser.Scene {
       this.sys.canvas.width * 0.5 - this.title.getBounds().centerX
     );
 
-    let buttonImages = [
-      "normal_button",
-      "hovered_button",
-      "pressed_button",
-      "hovered_pressed_button"
-    ];
-
     this.mouseButton = new TextButton(
       this,
       300,
       420,
-      buttonImages,
+      getNormalButtonImages(),
       "Start",
       () => {
         this.scene.start("ScoreScene");
       }
     );
     this.add.existing(this.mouseButton);
-
   }
 }

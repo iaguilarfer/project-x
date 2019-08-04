@@ -1,5 +1,6 @@
 import "phaser";
 import { TextButton } from "./textButton";
+import { getNormalButtonImages } from "./assets/images";
 
 export class ScoreScene extends Phaser.Scene {
   score: number;
@@ -21,18 +22,11 @@ export class ScoreScene extends Phaser.Scene {
       fill: "#FBFBAC"
     });
 
-    let buttonImages = [
-      "normal_button",
-      "hovered_button",
-      "pressed_button",
-      "hovered_pressed_button"
-    ];
-
     this.restartButton = new TextButton(
       this,
       400,
       350,
-      buttonImages,
+      getNormalButtonImages(),
       "Restart",
       () => {
         this.scene.start("WelcomeScene");
