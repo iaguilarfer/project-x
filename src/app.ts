@@ -1,7 +1,8 @@
 import "phaser";
 import GameConfig = Phaser.Types.Core.GameConfig;
-import { WelcomeScene } from "./welcomeScene";
-import { ScoreScene } from "./scoreScene";
+import { WelcomeScene } from "./scenes/welcomeScene";
+import { ScoreScene } from "./scenes/scoreScene";
+import { MapScene } from "./scenes/mapScene";
 
 const config: GameConfig = {
   title: "Project-X",
@@ -10,6 +11,7 @@ const config: GameConfig = {
   parent: "game",
   scene: [
     WelcomeScene,
+    MapScene,
     ScoreScene
   ],
   physics: {

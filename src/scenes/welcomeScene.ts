@@ -1,10 +1,11 @@
 import "phaser";
-import { TextButton } from "./textButton";
-import { getNormalButtonImages, Images, loadImages } from "./assets/images";
+import { TextButton } from "../objects/ui/textButton";
+import { getNormalButtonImages, loadImages } from "../assets/image";
 
 export class WelcomeScene extends Phaser.Scene {
   title: Phaser.GameObjects.Text;
-  mouseButton: Phaser.GameObjects.GameObject;
+  startButton: Phaser.GameObjects.GameObject;
+  endButton: Phaser.GameObjects.GameObject;
 
   constructor() {
     super({ key: "WelcomeScene" });
@@ -24,16 +25,28 @@ export class WelcomeScene extends Phaser.Scene {
       this.sys.canvas.width * 0.5 - this.title.getBounds().centerX
     );
 
-    this.mouseButton = new TextButton(
+    this.startButton = new TextButton(
       this,
       300,
       420,
       getNormalButtonImages(),
-      "Start",
+      "Go to map",
+      () => {
+        this.scene.start("MapScene");
+      }
+    );
+    this.add.existing(this.startButton);
+
+    this.endButton = new TextButton(
+      this,
+      300,
+      480,
+      getNormalButtonImages(),
+      "Go to score",
       () => {
         this.scene.start("ScoreScene");
       }
     );
-    this.add.existing(this.mouseButton);
+    this.add.existing(this.endButton);
   }
 }

@@ -1,6 +1,6 @@
 import "phaser";
-import { TextButton } from "./textButton";
-import { getNormalButtonImages } from "./assets/images";
+import { TextButton } from "../objects/ui/textButton";
+import { getNormalButtonImages } from "../assets/image";
 
 export class ScoreScene extends Phaser.Scene {
   score: number;

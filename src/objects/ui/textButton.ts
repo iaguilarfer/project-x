@@ -1,8 +1,8 @@
 import Scene = Phaser.Scene;
-import { Images } from "./assets/images";
+import { Image, ImageDepth } from "../../assets/image";
 
 export class TextButton extends Phaser.GameObjects.GameObject {
-  images: Array<Images>;
+  images: Array<Image>;
   text: Phaser.GameObjects.Text;
   button: Phaser.GameObjects.Image;
 
@@ -10,7 +10,7 @@ export class TextButton extends Phaser.GameObjects.GameObject {
     scene: Scene,
     x: number,
     y: number,
-    images: Array<Images>,
+    images: Array<Image>,
     text:string,
     onClick: () => void
   ) {
@@ -24,6 +24,9 @@ export class TextButton extends Phaser.GameObjects.GameObject {
     this.button.on("pointerout", this.enterButtonRestState, this);
     this.button.on("pointerdown", this.enterButtonActiveState, this);
     this.button.on("pointerup", onClick);
+
+    this.text.depth = ImageDepth.UserInterfaceText;
+    this.button.depth = ImageDepth.UserInterfaceImage;
   }
 
   private enterButtonHoverState() {
